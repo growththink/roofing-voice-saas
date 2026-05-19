@@ -22,7 +22,7 @@ export function VslPlayer({
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        event: typeof event === "number" ? `vsl_${event}` : `vsl_${event}`,
+        event: `vsl_${event}`,
         lead: leadHandle,
         at: new Date().toISOString(),
       }),
@@ -53,7 +53,11 @@ export function VslPlayer({
         if (data.event === "infoDelivery" && data.info) {
           const { currentTime, duration, playerState } = data.info;
           if (playerState === 1) emit("play");
-          if (typeof currentTime === "number" && typeof duration === "number" && duration > 0) {
+          if (
+            typeof currentTime === "number" &&
+            typeof duration === "number" &&
+            duration > 0
+          ) {
             const pct = (currentTime / duration) * 100;
             if (pct >= 25) emit(25);
             if (pct >= 50) emit(50);
@@ -75,27 +79,27 @@ export function VslPlayer({
   }, [started]);
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_30px_80px_-20px_rgba(249,115,22,0.25)]">
+    <div className="relative aspect-video w-full overflow-hidden rounded-[18px] bg-black border border-hairline product-shadow">
       {!started ? (
         <button
           type="button"
           onClick={() => setStarted(true)}
-          className="group absolute inset-0 flex items-center justify-center"
+          className="group absolute inset-0 flex items-center justify-center scale-press"
           aria-label="Play video"
         >
           <img
             src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
             alt="Video preview"
-            className="absolute inset-0 h-full w-full object-cover opacity-60 group-hover:opacity-70 transition"
+            className="absolute inset-0 h-full w-full object-cover opacity-85 group-hover:opacity-95 transition"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           <div className="relative z-10 flex flex-col items-center">
-            <span className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-orange-500 text-black shadow-[0_0_60px_-5px_rgba(249,115,22,0.7)] group-hover:scale-105 transition">
-              <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current ml-1" aria-hidden>
+            <span className="inline-flex h-[68px] w-[68px] items-center justify-center rounded-full bg-white/95 backdrop-blur-sm text-action group-hover:scale-105 transition">
+              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current ml-0.5" aria-hidden>
                 <path d="M8 5v14l11-7z" />
               </svg>
             </span>
-            <span className="mt-5 text-sm font-medium text-white/80">
+            <span className="mt-4 text-[14px] font-medium text-white drop-shadow-sm">
               Watch the 5-minute walkthrough
             </span>
           </div>

@@ -23,98 +23,84 @@ export default async function BookPage({
 
   return (
     <>
-      <header className="border-b border-white/5">
-        <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-orange-500 pulse-dot" />
-            <span className="font-semibold tracking-tight text-white">
-              RoofVoice<span className="text-orange-500">.</span>AI
-            </span>
+      <header className="bg-black text-white">
+        <div className="mx-auto max-w-[1024px] h-11 px-5 flex items-center justify-between text-[12px]">
+          <Link href="/" className="flex items-center gap-1.5 text-white/85 hover:text-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+            RoofVoice
           </Link>
           <Stepper current={2} />
         </div>
       </header>
 
-      <main className="flex-1">
-        <section className="mx-auto max-w-6xl px-6 py-12 grid lg:grid-cols-[1.4fr_1fr] gap-10">
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-orange-400/90">
-              Step 2 of 3
-            </p>
-            <h1 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-xl leading-tight">
-              Pick a slot for your free strategy call.
-            </h1>
-            <p className="mt-4 text-white/55 max-w-xl">
-              30 minutes. Bring your monthly call volume and current CRM. We
-              walk out with your AI Voice Agent deployment plan.
-            </p>
+      <section className="bg-canvas">
+        <div className="mx-auto max-w-[1024px] px-5 pt-16 pb-8 text-center">
+          <p className="eyebrow text-action">Step 2 of 3</p>
+          <h1 className="headline-tile mt-3 max-w-[720px] mx-auto">
+            Pick a slot for your free strategy call.
+          </h1>
+          <p className="lead mt-4 text-ink-80 max-w-[560px] mx-auto">
+            30 minutes. Bring your monthly call volume and current CRM. We walk
+            out with your AI Voice Agent deployment plan.
+          </p>
+        </div>
+      </section>
 
-            <div className="mt-8 rounded-2xl border border-white/10 bg-zinc-950/80 overflow-hidden">
-              <div className="h-1 bg-gradient-to-r from-orange-500/0 via-orange-500/60 to-orange-500/0" />
-              <iframe
-                src={embedSrc}
-                title="Schedule your strategy call"
-                className="w-full bg-white"
-                style={{ minHeight: 720, border: "none" }}
-                loading="lazy"
-              />
-            </div>
+      <section className="bg-parchment">
+        <div className="mx-auto max-w-[1024px] px-5 pb-20 pt-6 grid lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-10">
+          <div className="rounded-[18px] border border-hairline bg-canvas overflow-hidden">
+            <iframe
+              src={embedSrc}
+              title="Schedule your strategy call"
+              className="w-full bg-canvas"
+              style={{ minHeight: 720, border: "none" }}
+              loading="lazy"
+            />
           </div>
-
-          <aside className="space-y-6 lg:sticky lg:top-6 h-fit">
+          <aside className="space-y-5 lg:sticky lg:top-28 h-fit">
             <Panel title="What we'll cover">
-              <ul className="space-y-3 text-sm text-white/70">
+              <ul className="space-y-3 text-[15px] text-ink-80">
                 {[
                   "Your storm-season call volume audit",
                   "Live demo of an AI Voice Agent trained on a similar roofer",
                   "Custom deployment plan (CRM, scripts, transfer rules)",
                   "Transparent pricing — no proposals, no surprises",
                 ].map((line) => (
-                  <li key={line} className="flex gap-3">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500" />
+                  <li key={line} className="flex gap-2.5">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-action" />
                     {line}
                   </li>
                 ))}
               </ul>
             </Panel>
-
             <Panel title="Who's running the call">
-              <p className="text-sm text-white/70 leading-relaxed">
+              <p className="text-[15px] text-ink-80 leading-relaxed">
                 A senior deployment engineer who has launched voice agents for
                 40+ contractors across TX, FL, ON, and CO. Not a sales rep.
               </p>
             </Panel>
-
-            <div className="rounded-xl border border-orange-500/20 bg-orange-500/[0.04] p-5">
-              <p className="text-xs uppercase tracking-[0.18em] text-orange-400">
-                Pro tip
-              </p>
-              <p className="mt-2 text-sm text-white/70 leading-relaxed">
+            <div className="rounded-[18px] border border-action/20 bg-action/[0.04] p-6">
+              <p className="eyebrow text-action">Pro tip</p>
+              <p className="mt-2 text-[15px] text-ink-80 leading-relaxed">
                 Pick a slot in the next 48 hours. Storm-season calendars fill
-                fast and our team caps onboardings at 6 / week.
+                fast — we cap onboardings at 6 / week.
               </p>
             </div>
           </aside>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <footer className="border-t border-white/5 py-6 text-center text-xs text-white/30">
+      <footer className="bg-parchment border-t border-hairline py-8 text-center text-[12px] text-ink-48">
         © {new Date().getFullYear()} RoofVoice AI · Step 2 of 3
       </footer>
     </>
   );
 }
 
-function Panel({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-      <h3 className="text-sm font-semibold text-white">{title}</h3>
+    <div className="rounded-[18px] border border-hairline bg-canvas p-6">
+      <h3 className="text-[15px] font-semibold text-ink">{title}</h3>
       <div className="mt-3">{children}</div>
     </div>
   );
@@ -123,7 +109,7 @@ function Panel({
 function Stepper({ current }: { current: 1 | 2 | 3 }) {
   const labels = ["Form", "Book", "Watch"] as const;
   return (
-    <ol className="hidden sm:flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/40">
+    <ol className="hidden sm:flex items-center gap-2 text-[12px] text-white/60">
       {labels.map((label, i) => {
         const step = (i + 1) as 1 | 2 | 3;
         const active = step === current;
@@ -133,16 +119,16 @@ function Stepper({ current }: { current: 1 | 2 | 3 }) {
             <span
               className={
                 active
-                  ? "inline-flex h-6 w-6 items-center justify-center rounded-full bg-orange-500 text-black font-semibold"
+                  ? "inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-black font-medium"
                   : done
-                    ? "inline-flex h-6 w-6 items-center justify-center rounded-full bg-orange-500/20 text-orange-300 font-semibold"
-                    : "inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-white/40"
+                    ? "inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/30 text-white"
+                    : "inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/20 text-white/40"
               }
             >
               {step}
             </span>
-            <span className={active ? "text-orange-400" : ""}>{label}</span>
-            {i < 2 && <span className="mx-2 h-px w-6 bg-white/10" />}
+            <span className={active ? "text-white" : ""}>{label}</span>
+            {i < 2 && <span className="mx-1 h-px w-5 bg-white/15" />}
           </li>
         );
       })}
