@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RoofVoice AI — Funnel Site (v1)
 
-## Getting Started
+3-page marketing funnel for an AI Voice SaaS targeting US & Canada roofing
+contractors. Built per `PRD_Roofing_AI_Voice_Funnel.md`.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router) + React 19
+- Tailwind CSS v4
+- Edge route handler for tracking forwarder (`/api/track`)
+- Funnel gating via `src/proxy.ts` (Next 16 proxy — formerly middleware)
+
+## Pages
+
+| Path | Purpose |
+| --- | --- |
+| `/` | Hero + lead form + value props + proof + comparison + FAQ |
+| `/book` | Calendly embed + sidebar (Step 2 of 3) |
+| `/watch` | YouTube VSL with quartile tracking (Step 3 of 3) |
+
+Direct hits to `/book` and `/watch` in production redirect to `/` unless they
+carry the funnel parameters (`?lead_id`, `?invitee`, `?event`) or arrive from
+a same-origin referrer.
+
+## Local dev
 
 ```bash
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See `.env.example`. The form / Calendly / VSL fields are placeholders until
+the client wires real GHL / Calendly / video IDs. `N8N_WEBHOOK_URL` is
+optional — if unset, `/api/track` logs payloads in dev and returns
+`{ forwarded: false }`.
 
-## Learn More
+## What's NOT in v1
 
-To learn more about Next.js, take a look at the following resources:
+- n8n workflow JSON exports
+- Supabase migrations
+- GA4 / Meta Pixel client snippets
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+These are intentional — backend automation is wired through n8n + Supabase
+per the PRD. The frontend only forwards events to `N8N_WEBHOOK_URL`.
