@@ -1,36 +1,46 @@
 export function PainSolution() {
   const items = [
     {
-      pain: "70% of inbound leads ghost you.",
+      icon: "📵",
+      pain: "70% of inbound leads ghost you",
       fix: "AI picks up in 1 ring — even at 2 AM during a hail storm.",
     },
     {
-      pain: "Storm surge buries your front desk.",
-      fix: "100+ parallel calls. No busy signal, no missed jobs.",
+      icon: "🌩️",
+      pain: "Storm surge buries your front desk",
+      fix: "100+ parallel calls handled, no busy signal, no missed jobs.",
     },
     {
-      pain: "Ad spend bleeds out on dead leads.",
-      fix: "Every lead qualified, tagged, sequenced in your CRM.",
+      icon: "💸",
+      pain: "Ad spend bleeds out on dead leads",
+      fix: "Every lead qualified, tagged, and follow-up sequenced in your CRM.",
     },
     {
-      pain: "Owner is the booking bottleneck.",
+      icon: "📅",
+      pain: "Owner is the bottleneck for bookings",
       fix: "Live appointments dropped on your calendar — zero owner time.",
     },
   ];
 
   return (
-    <section className="bg-tile-1 text-white">
-      <div className="mx-auto max-w-[1024px] px-5 py-20 sm:py-[80px]">
-        <p className="eyebrow text-sky">The roofing operator&apos;s problem</p>
-        <h2 className="headline-tile mt-3 text-white max-w-[720px]">
-          You don&apos;t have a lead problem.{" "}
-          <span className="text-white/50">You have a response-time problem.</span>
+    <section className="relative py-24 border-t border-white/5">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionLabel>The roofing operator&apos;s problem</SectionLabel>
+        <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-2xl">
+          You don&apos;t have a lead problem.
+          <span className="text-white/40"> You have a response-time problem.</span>
         </h2>
-        <div className="mt-12 grid sm:grid-cols-2 gap-px bg-white/10 rounded-[18px] overflow-hidden border border-white/10">
+        <div className="mt-12 grid sm:grid-cols-2 gap-4">
           {items.map((i) => (
-            <div key={i.pain} className="bg-tile-1 p-7 sm:p-8">
-              <p className="text-[19px] font-semibold leading-snug">{i.pain}</p>
-              <p className="mt-2.5 text-[15px] text-[#cccccc] leading-relaxed">{i.fix}</p>
+            <div
+              key={i.pain}
+              className="group rounded-xl border border-white/10 bg-white/[0.02] p-6 hover:border-orange-500/40 hover:bg-orange-500/[0.03] transition"
+            >
+              <div className="text-2xl">{i.icon}</div>
+              <p className="mt-3 text-white font-medium">{i.pain}</p>
+              <p className="mt-2 text-sm text-white/55 leading-relaxed">
+                {i.fix}
+              </p>
             </div>
           ))}
         </div>
@@ -43,42 +53,45 @@ export function HowItWorks() {
   const steps = [
     {
       n: "01",
-      title: "Submit the form.",
-      copy: "Business name, monthly call volume, current CRM. Takes 30 seconds.",
+      title: "Submit the form",
+      copy: "Tell us your business name, monthly call volume, and what CRM you use. 30 seconds.",
     },
     {
       n: "02",
-      title: "Free strategy call.",
-      copy: "We map your choke points and demo a voice agent trained on your services.",
+      title: "Free strategy call",
+      copy: "We map your storm-season choke points and demo a voice agent trained on your exact services.",
     },
     {
       n: "03",
-      title: "Live in 48 hours.",
-      copy: "Fully trained AI answering calls, booking jobs, syncing to your CRM.",
+      title: "Live in 48 hours",
+      copy: "Fully trained AI Voice Agent answering calls, booking jobs, and syncing to your CRM — set and forget.",
     },
   ];
 
   return (
-    <section id="how" className="bg-canvas">
-      <div className="mx-auto max-w-[1024px] px-5 py-20 sm:py-[80px]">
-        <p className="eyebrow text-action">How it works</p>
-        <h2 className="headline-tile mt-3 max-w-[720px]">
+    <section className="relative py-24 border-t border-white/5">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionLabel>How it works</SectionLabel>
+        <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-2xl">
           From form to first booked job in 48 hours.
         </h2>
-        <div className="mt-12 grid md:grid-cols-3 gap-4 sm:gap-5">
+        <div className="mt-12 grid md:grid-cols-3 gap-4 relative">
+          <div className="hidden md:block absolute top-12 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
           {steps.map((s) => (
-            <article
+            <div
               key={s.n}
-              className="rounded-[18px] border border-hairline bg-canvas p-7"
+              className="relative rounded-xl border border-white/10 bg-zinc-950/60 p-6"
             >
-              <span className="text-[13px] font-mono tracking-tight text-action">{s.n}</span>
-              <h3 className="mt-5 text-[22px] font-semibold leading-tight tracking-tight">
+              <div className="relative z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-orange-500 text-black font-semibold text-sm">
+                {s.n}
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-white">
                 {s.title}
               </h3>
-              <p className="mt-2.5 text-[15px] text-ink-80 leading-relaxed">
+              <p className="mt-2 text-sm text-white/55 leading-relaxed">
                 {s.copy}
               </p>
-            </article>
+            </div>
           ))}
         </div>
       </div>
@@ -90,9 +103,9 @@ export function Proof() {
   const cards = [
     {
       result: "+$90K",
-      label: "storm-season revenue",
+      label: "in storm-season revenue",
       quote:
-        "We closed $12K from a single AI-handled call we would&apos;ve missed at 11 PM.",
+        "We literally closed $12K from a single AI-handled call we would&apos;ve missed at 11 PM.",
       who: "Mike D. — Summit Roofing, TX",
     },
     {
@@ -112,31 +125,31 @@ export function Proof() {
   ];
 
   return (
-    <section id="proof" className="bg-parchment">
-      <div className="mx-auto max-w-[1024px] px-5 py-20 sm:py-[80px]">
-        <p className="eyebrow text-action">What roofers say</p>
-        <h2 className="headline-tile mt-3 max-w-[720px]">
+    <section className="relative py-24 border-t border-white/5">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionLabel>What roofers say</SectionLabel>
+        <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-2xl">
           Real numbers. Real storm seasons.
         </h2>
-        <div className="mt-12 grid md:grid-cols-3 gap-4 sm:gap-5">
+        <div className="mt-12 grid md:grid-cols-3 gap-4">
           {cards.map((c, i) => (
             <article
               key={i}
-              className="rounded-[18px] border border-hairline bg-canvas p-7 flex flex-col"
+              className="rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-6 flex flex-col"
             >
               <div className="flex items-baseline gap-2">
-                <span className="font-display text-[44px] font-semibold tracking-tight leading-none text-action">
+                <span className="text-4xl font-semibold text-orange-400 tracking-tight">
                   {c.result}
                 </span>
+                <span className="text-xs uppercase tracking-wider text-white/40">
+                  {c.label}
+                </span>
               </div>
-              <span className="mt-2 text-[13px] uppercase tracking-wider text-ink-48">
-                {c.label}
-              </span>
               <blockquote
-                className="mt-6 text-[16px] text-ink-80 leading-relaxed flex-1"
+                className="mt-6 text-sm text-white/75 leading-relaxed flex-1"
                 dangerouslySetInnerHTML={{ __html: `&ldquo;${c.quote}&rdquo;` }}
               />
-              <p className="mt-6 text-[13px] text-ink-48 border-t border-divider pt-4">
+              <p className="mt-6 text-xs text-white/45 border-t border-white/5 pt-4">
                 {c.who}
               </p>
             </article>
@@ -159,27 +172,34 @@ export function Comparison() {
   ] as const;
 
   return (
-    <section className="bg-tile-3 text-white">
-      <div className="mx-auto max-w-[1024px] px-5 py-20 sm:py-[80px]">
-        <p className="eyebrow text-sky">The honest comparison</p>
-        <h2 className="headline-tile mt-3 text-white max-w-[720px]">
+    <section className="relative py-24 border-t border-white/5">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionLabel>The honest comparison</SectionLabel>
+        <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-white max-w-2xl">
           Human receptionist vs AI Voice Agent.
         </h2>
 
-        <div className="mt-12 overflow-x-auto rounded-[18px] border border-white/10">
-          <table className="w-full text-[15px]">
+        <div className="mt-12 overflow-x-auto rounded-xl border border-white/10">
+          <table className="w-full text-sm">
             <thead>
-              <tr className="bg-white/[0.04] text-white/60">
+              <tr className="bg-white/[0.04] text-white/55">
                 <th className="text-left font-medium px-6 py-4">Capability</th>
-                <th className="text-center font-medium px-6 py-4">Human receptionist</th>
-                <th className="text-center font-medium px-6 py-4 text-sky">RoofVoice AI</th>
+                <th className="text-center font-medium px-6 py-4">
+                  Human receptionist
+                </th>
+                <th className="text-center font-medium px-6 py-4 text-orange-400">
+                  RoofVoice AI
+                </th>
               </tr>
             </thead>
             <tbody>
               {rows.map(([label, human, ai], i) => (
-                <tr key={i} className="border-t border-white/5">
+                <tr
+                  key={i}
+                  className="border-t border-white/5 hover:bg-white/[0.015]"
+                >
                   <td
-                    className="px-6 py-4 text-white/90"
+                    className="px-6 py-4 text-white/85"
                     dangerouslySetInnerHTML={{ __html: label as string }}
                   />
                   <td className="px-6 py-4 text-center">
@@ -198,16 +218,24 @@ export function Comparison() {
   );
 }
 
-function Cell({ value, highlight }: { value: boolean | string; highlight?: boolean }) {
+function Cell({
+  value,
+  highlight,
+}: {
+  value: boolean | string;
+  highlight?: boolean;
+}) {
   if (typeof value === "string") {
-    return <span className="text-[13px] text-white/55 italic">{value}</span>;
+    return (
+      <span className="text-xs text-white/55 italic">{value}</span>
+    );
   }
   if (value) {
     return (
       <span
         className={
           highlight
-            ? "inline-flex h-7 w-7 items-center justify-center rounded-full bg-action text-white"
+            ? "inline-flex h-7 w-7 items-center justify-center rounded-full bg-orange-500 text-black"
             : "inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white/70"
         }
       >
@@ -251,23 +279,23 @@ export function FAQ() {
   ];
 
   return (
-    <section id="faq" className="bg-canvas">
-      <div className="mx-auto max-w-[760px] px-5 py-20 sm:py-[80px]">
-        <p className="eyebrow text-action text-center">Frequently asked</p>
-        <h2 className="headline-tile mt-3 text-center">
+    <section className="relative py-24 border-t border-white/5">
+      <div className="mx-auto max-w-3xl px-6">
+        <SectionLabel className="text-center block">FAQ</SectionLabel>
+        <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-white text-center">
           The questions roofers always ask.
         </h2>
-        <div className="mt-12 divide-y divide-divider rounded-[18px] border border-hairline bg-canvas">
+        <div className="mt-12 divide-y divide-white/5 rounded-xl border border-white/10 bg-white/[0.02]">
           {items.map((it, i) => (
             <details key={i} className="group px-6 py-5 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
-                <span className="text-[17px] font-semibold text-ink">{it.q}</span>
-                <span className="mt-1 shrink-0 text-action text-[22px] leading-none transition group-open:rotate-45">
+                <span className="text-white font-medium">{it.q}</span>
+                <span className="mt-1 shrink-0 text-orange-400 transition group-open:rotate-45 text-xl leading-none">
                   +
                 </span>
               </summary>
               <p
-                className="mt-3 text-[15px] text-ink-80 leading-relaxed"
+                className="mt-3 text-sm text-white/55 leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: it.a }}
               />
             </details>
@@ -280,29 +308,23 @@ export function FAQ() {
 
 export function FinalCTA() {
   return (
-    <section className="bg-tile-1 text-white">
-      <div className="mx-auto max-w-[1024px] px-5 py-24 sm:py-[100px] text-center">
-        <h2 className="headline-hero text-white">
-          The next storm doesn&apos;t wait.
+    <section className="relative py-24 border-t border-white/5">
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-[1.05]">
+          The next storm doesn&apos;t wait.{" "}
+          <span className="text-orange-500">Neither should you.</span>
         </h2>
-        <p className="lead mt-5 text-[#cccccc] max-w-[640px] mx-auto">
+        <p className="mt-5 text-white/55 max-w-xl mx-auto">
           Lock your free 30-minute strategy call. Walk out with a deployment
-          plan tailored to your service area.
+          plan tailored to your service area &mdash; whether the storm hits
+          next Tuesday or next quarter.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="#book-call"
-            className="inline-flex items-center rounded-full bg-action text-white px-[22px] h-11 text-[17px] font-normal scale-press hover:bg-action-focus transition"
-          >
-            Book my strategy call
-          </a>
-          <a
-            href="#how"
-            className="inline-flex items-center rounded-full text-sky px-[22px] h-11 text-[17px] font-normal border border-sky/30 hover:bg-white/[0.04] transition scale-press"
-          >
-            Learn more &nbsp;›
-          </a>
-        </div>
+        <a
+          href="#book-call"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-orange-500 hover:bg-orange-400 px-6 h-12 font-semibold text-black transition"
+        >
+          Book my strategy call →
+        </a>
       </div>
     </section>
   );
@@ -310,47 +332,34 @@ export function FinalCTA() {
 
 export function Footer() {
   return (
-    <footer className="bg-parchment border-t border-hairline">
-      <div className="mx-auto max-w-[1024px] px-5 py-12">
-        <div className="grid sm:grid-cols-4 gap-8 text-[14px] leading-[2.2]">
-          <div>
-            <p className="text-[13px] font-semibold text-ink mb-3">Product</p>
-            <ul className="text-ink-80">
-              <li><a href="#how" className="hover:text-ink">How it works</a></li>
-              <li><a href="#proof" className="hover:text-ink">Stories</a></li>
-              <li><a href="#faq" className="hover:text-ink">Pricing</a></li>
-              <li><a href="#faq" className="hover:text-ink">FAQ</a></li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-[13px] font-semibold text-ink mb-3">Company</p>
-            <ul className="text-ink-80">
-              <li><a href="#" className="hover:text-ink">About</a></li>
-              <li><a href="#" className="hover:text-ink">Contact</a></li>
-              <li><a href="#" className="hover:text-ink">Careers</a></li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-[13px] font-semibold text-ink mb-3">Legal</p>
-            <ul className="text-ink-80">
-              <li><a href="#" className="hover:text-ink">Privacy</a></li>
-              <li><a href="#" className="hover:text-ink">Terms</a></li>
-              <li><a href="#" className="hover:text-ink">Do Not Sell</a></li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-[13px] font-semibold text-ink mb-3">Support</p>
-            <ul className="text-ink-80">
-              <li><a href="mailto:hello@roofvoice.ai" className="hover:text-ink">hello@roofvoice.ai</a></li>
-              <li><a href="#" className="hover:text-ink">Status</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="mt-10 pt-6 border-t border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[12px] text-ink-48">
-          <p>© {new Date().getFullYear()} RoofVoice AI. Built for US &amp; Canada roofing contractors.</p>
-          <p>More ways to reach us: <a href="#" className="text-action hover:underline">talk to sales</a> or <a href="#book-call" className="text-action hover:underline">book a call</a>.</p>
+    <footer className="relative border-t border-white/5 py-10">
+      <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-white/40">
+        <p>
+          © {new Date().getFullYear()} RoofVoice AI. AI Voice Agents for
+          roofing contractors across US &amp; Canada.
+        </p>
+        <div className="flex items-center gap-5">
+          <a href="#" className="hover:text-white/70">Privacy</a>
+          <a href="#" className="hover:text-white/70">Terms</a>
+          <a href="#" className="hover:text-white/70">Do Not Sell My Info</a>
         </div>
       </div>
     </footer>
+  );
+}
+
+function SectionLabel({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      className={`text-xs uppercase tracking-[0.22em] text-orange-400/90 ${className}`}
+    >
+      {children}
+    </span>
   );
 }

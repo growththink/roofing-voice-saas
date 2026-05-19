@@ -1,58 +1,26 @@
 import Link from "next/link";
 
 export function Nav() {
-  const links = [
-    { label: "Overview", href: "/" },
-    { label: "How it works", href: "#how" },
-    { label: "Proof", href: "#proof" },
-    { label: "Pricing", href: "#faq" },
-    { label: "FAQ", href: "#faq" },
-  ];
-
   return (
-    <>
-      <div className="sticky top-0 z-50 bg-black text-white">
-        <div className="mx-auto max-w-[1024px] h-11 px-5 flex items-center justify-between text-[12px] tracking-[-0.01em] text-white/90">
-          <Link href="/" className="flex items-center gap-1.5 opacity-90 hover:opacity-100">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-white" />
-            <span className="font-medium">RoofVoice</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-7 text-white/75">
-            {links.map((l) => (
-              <a key={l.label} href={l.href} className="hover:text-white transition-colors">
-                {l.label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex items-center gap-2">
-            <a
-              href="#book-call"
-              className="rounded-[8px] bg-white text-black px-3 py-1.5 text-[12px] font-medium scale-press hover:bg-white/90 transition"
-            >
-              Start
-            </a>
-          </div>
-        </div>
+    <header className="sticky top-0 z-40 backdrop-blur-xl bg-black/40 border-b border-white/5">
+      <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 group">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inset-0 rounded-full bg-orange-500 pulse-dot" />
+            <span className="relative rounded-full h-2.5 w-2.5 bg-orange-500" />
+          </span>
+          <span className="font-semibold tracking-tight text-white">
+            RoofVoice<span className="text-orange-500">.</span>AI
+          </span>
+        </Link>
+        <a
+          href="#book-call"
+          className="inline-flex items-center gap-1.5 rounded-full bg-orange-500 hover:bg-orange-400 transition px-4 h-9 text-sm font-medium text-black"
+        >
+          Start Now
+          <span aria-hidden>→</span>
+        </a>
       </div>
-      <div className="sticky top-11 z-40 bg-parchment/80 backdrop-blur-xl backdrop-saturate-150 border-b border-hairline/60">
-        <div className="mx-auto max-w-[1024px] h-[52px] px-5 flex items-center justify-between">
-          <span className="tagline text-ink">RoofVoice AI</span>
-          <div className="flex items-center gap-6 text-[14px] text-ink-80">
-            <a href="#how" className="hidden sm:inline hover:text-ink transition-colors">
-              How it works
-            </a>
-            <a href="#proof" className="hidden sm:inline hover:text-ink transition-colors">
-              Stories
-            </a>
-            <a
-              href="#book-call"
-              className="inline-flex items-center rounded-full bg-action text-white px-[18px] py-[7px] text-[14px] font-normal scale-press hover:bg-action-focus transition"
-            >
-              Book a call
-            </a>
-          </div>
-        </div>
-      </div>
-    </>
+    </header>
   );
 }
